@@ -1,0 +1,53 @@
+students = []
+
+print("🎓 Welcome to the Smart Student Grader App 🎓")
+
+while True:
+    print("\nWhat would you like to do?")
+    print("1. Add a student result")
+    print("2. View all student records")
+    print("3. Exit")
+
+    choice = input("Enter your choice (1–3): ")
+
+    if choice == "1":
+        name = input("Enter student name: ")
+        subject = input("Enter subject: ")
+        score = int(input("Enter score (0–100): "))
+
+        if score >= 70:
+            grade = "A"
+        elif score >= 60:
+            grade = "B"
+        elif score >= 50:
+            grade = "C"
+        elif score >= 45:
+            grade = "D"
+        elif score >= 40:
+            grade = "E"
+        else:
+            grade = "F"
+
+        student = {
+            "name": name,
+            "subject": subject,
+            "score": score,
+            "grade": grade
+        }
+
+        students.append(student)
+        print(f"✅ {name}'s record added successfully!")
+
+    elif choice == "2":
+        if not students:
+            print("📭 No records found yet.")
+        else:
+            print("\n📚 All Student Records:")
+            for i, student in enumerate(students, start=1):
+                print(f"{i}. {student['name']} - {student['subject']} - Score: {student['score']} - Grade: {student['grade']}")
+                
+    elif choice == "3":
+        print("👋 Exiting the app. Goodbye!")
+        break
+    else:
+        print("❌ Invalid choice. Try again.")
